@@ -1,12 +1,303 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inho Jo - CV</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-  <p>Hello, World!</p>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo-spacer"></div>
+            <!-- Social links moved to separate container -->
+        </div>
+    </header>
+
+
+    <!-- Social Links Sidebar (Floating for All Devices) -->
+    <nav class="social-sidebar">
+        <a href="https://www.facebook.com/profile.php?id=100004913204046" target="_blank" title="Facebook"
+            class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/@odd.innocent" target="_blank" title="YouTube" class="social-btn youtube"><i
+                class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/inho-jo-751631b8/" target="_blank" title="LinkedIn"
+            class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://scholar.google.co.kr/citations?user=e1jBZuwAAAAJ&hl=ko" target="_blank" title="Google Scholar"
+            class="social-btn scholar"><i class="fas fa-graduation-cap"></i></a>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="profile-container">
+                <div class="profile-image-wrapper">
+                    <div class="profile-hex-container">
+                        <div class="profile-placeholder">
+                            <img src="profile.jpg" alt="Inho Jo">
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h1 class="name">조인호 <span class="name-en">Inho, Jo</span></h1>
+                    <ul class="contact-list">
+                        <li><span class="label">Tel</span> <a href="tel:01099167562">010-9916-7562</a></li>
+                        <li><span class="label">E-mail</span> <a
+                                href="mailto:odd.innocent@gmail.com">odd.innocent@gmail.com</a></li>
+                        <li><span class="label">Orcid</span> <a href="https://orcid.org/0009-0002-4859-2554"
+                                target="_blank">0009-0002-4859-2554</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="content-section" id="education">
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2026 (Expected)</div>
+                    <div class="timeline-content">
+                        <h3>Ph.D in Architectural Engineering</h3>
+                        <p class="sub-detail">Major in Construction Materials & Construction Management</p>
+                        <p class="institution">Hanyang University</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021</div>
+                    <div class="timeline-content">
+                        <h3>B.E in Architectural Engineering</h3>
+                        <p class="institution">Hanyang University</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Interests Section -->
+        <section class="content-section" id="research-interests">
+            <h2 class="section-title">RESEARCH INTERESTS</h2>
+            <div class="keywords-grid">
+                <span class="keyword">Automation in Construction</span>
+                <span class="keyword">Construction Management</span>
+                <span class="keyword">Project Management</span>
+                <span class="keyword">Facility Management</span>
+                <span class="keyword">Machine Learning</span>
+                <span class="keyword">Artificial Intelligence</span>
+                <span class="keyword">Process Optimization</span>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="content-section" id="publications">
+            <h2 class="section-title">PUBLICATIONS (SCI)</h2>
+            <ol class="publication-list">
+                <li>
+                    Seok-Ho Noh, <strong>Inho Jo</strong>, SangHyeok Han, Sungkon Moon*, Jae-Jun Kim. (2023).
+                    <a href="https://doi.org/10.3390/buildings13122933" target="_blank"
+                        class="paper-title">Identification of occupant dissatisfaction factors in newly constructed
+                        apartments: Text mining and semantic network analysis.</a>
+                    <em>Buildings, 13</em>(12), 2933.
+                </li>
+                <li>
+                    Bohee Kim, <strong>Inho Jo*</strong>, Namhyuk Ham*, Jae-jun Kim. (2024).
+                    <a href="https://doi.org/10.3390/app142311383" target="_blank" class="paper-title">Simplified
+                        Scan-vs-BIM Frameworks for Automated Structural Inspection of Steel Structures.</a>
+                    <em>Applied Sciences, 14</em>(23), 11383.
+                </li>
+                <li>
+                    <strong>Inho Jo</strong>, SangHyeok Han, Lei Hou, Sungkon Moon*, & Jae-Jun Kim. (2025).
+                    <a href="https://doi.org/10.1061/JMENEA.MEENG-6296" target="_blank" class="paper-title">Developing
+                        and Evaluating a Classification Model for Construction Defect Control: A Text Mining and
+                        Ensemble Learning Approach.</a>
+                    <em>Journal of Management in Engineering, 41</em>(2), 04024071.
+                </li>
+                <li>
+                    <strong>Inho Jo</strong>, Yungu Lee*, Namhyuk Ham*, Juhyung Kim, Jae-Jun Kim. (2025).
+                    <a href="https://doi.org/10.3390/app15137196" target="_blank" class="paper-title">A Quantitative
+                        Evaluation of UAV Flight Parameters for SfM-based 3D Reconstruction of Buildings.</a>
+                    <em>Applied Sciences, 15</em>(13), 7196.
+                </li>
+            </ol>
+
+            <h3 class="subsection-title">PUBLICATIONS (NON-SCI)</h3>
+            <ol class="publication-list">
+                <li>
+                    Temp Author list. (Year). <span class="paper-title">Temp Publication Title 1</span>. <em>Journal
+                        Name</em>.
+                </li>
+                <li>
+                    Temp Author list. (Year). <span class="paper-title">Temp Publication Title 2</span>. <em>Journal
+                        Name</em>.
+                </li>
+            </ol>
+        </section>
+
+        <!-- Conferences Section -->
+        <section class="content-section" id="conferences">
+            <h2 class="section-title">CONFERENCES</h2>
+            <ol class="publication-list">
+                <li>
+                    Temp Author list. (Year). <span class="paper-title">Temp Conference Paper Title 1</span>.
+                    <em>Conference Name</em>.
+                </li>
+                <li>
+                    Temp Author list. (Year). <span class="paper-title">Temp Conference Paper Title 2</span>.
+                    <em>Conference Name</em>.
+                </li>
+            </ol>
+        </section>
+
+        <!-- Research Experience Section -->
+        <section class="content-section" id="research-experience">
+            <h2 class="section-title">RESEARCH EXPERIENCES</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025.03 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Development of Prompt Engineering Framework for the Generative AI Utilization in Domestic
+                            and International Construction Project Contract Risk Management</h3>
+                        <p class="role">Researcher</p>
+                        <p class="institution">Ministry of Land, Infrastructure and Transport</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022.03 - 2023.12</div>
+                    <div class="timeline-content">
+                        <h3>Research on the Future of Architectural Spaces in 2050</h3>
+                        <p class="role">Researcher</p>
+                        <p class="institution">Korea Agency for Infrastructure Technology Advancement</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022.03 - 2023.12</div>
+                    <div class="timeline-content">
+                        <h3>Research on the development of digital diagnosis and design integration technology for
+                            buildings to promote green remodeling</h3>
+                        <p class="role">Researcher</p>
+                        <p class="institution">Korea Institute of Construction Technology</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022.06 - 2022.12</div>
+                    <div class="timeline-content">
+                        <h3>Research on Smart City Embedded Urban Space Solutions</h3>
+                        <p class="role">Researcher</p>
+                        <p class="institution">Hyundai NGV</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section class="content-section" id="work-experience">
+            <h2 class="section-title">WORK EXPERIENCES</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2017.09 - 2021.04</div>
+                    <div class="timeline-content">
+                        <h3>RP AEC Co.,Ltd</h3>
+                        <p class="role">Principal Research Engineer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teaching Experience Section -->
+        <section class="content-section" id="teaching-experience">
+            <h2 class="section-title">TEACHING EXPERIENCES</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Temp Date</div>
+                    <div class="timeline-content">
+                        <h3>Temp Teaching Experience 1</h3>
+                        <p class="role">Calculus TA</p>
+                        <p class="institution">Hanyang University</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Temp Date</div>
+                    <div class="timeline-content">
+                        <h3>Temp Teaching Experience 2</h3>
+                        <p class="role">Physics Tutor</p>
+                        <p class="institution">Hanyang University</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards Section -->
+        <section class="content-section" id="awards">
+            <h2 class="section-title">AWARDS AND HONORS</h2>
+            <div class="awards-list">
+                <div class="award-item">
+                    <div class="award-date">2023.12</div>
+                    <div class="award-info">
+                        <h3>The Ki Chan Yu Memorial Junior Award</h3>
+                        <p class="institution">Korean Institute of BIM</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-date">2022.12</div>
+                    <div class="award-info">
+                        <h3>Grand Prize, KIBIM BIM Symposium Competition</h3>
+                        <p class="institution">Korean Institute of BIM</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-date">2021.12</div>
+                    <div class="award-info">
+                        <h3>Excellence Prize, KIBIM International Symposium Competition</h3>
+                        <p class="institution">Korean Institute of BIM</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-date">2020.12</div>
+                    <div class="award-info">
+                        <h3>Grand Prize, KIBIM International Symposium Competition</h3>
+                        <p class="institution">Korean Institute of BIM</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-date">2020.11</div>
+                    <div class="award-info">
+                        <h3>Alumni Association Award, Hanyang University Architecture Academic Festival</h3>
+                        <p class="institution">Hanyang University</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-date">2019.11</div>
+                    <div class="award-info">
+                        <h3>Grand Prize, Hanyang University Architecture Academic Festival</h3>
+                        <p class="institution">Hanyang University</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-date">2018.11</div>
+                    <div class="award-info">
+                        <h3>Grand Prize, Hanyang University Architecture Academic Festival</h3>
+                        <p class="institution">Hanyang University</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Inho Jo. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
