@@ -1,38 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Setup generic section observer
-    const sectionObserverOptions = {
+    // Setup generic section observer for Fade In effect
+    const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1
+        threshold: 0.05 // Trigger slightly earlier
     };
 
-    const sectionObserver = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-
-                // If this section has timeline items or list items, animate them too
-                const childItems = entry.target.querySelectorAll('.timeline-item, .keyword, .award-item, .publication-list li');
-                childItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('visible-item');
-                    }, index * 100); // 100ms stagger
-                });
-
-                observer.unobserve(entry.target);
+                observer.unobserve(entry.target); // Run once
             }
         });
-    }, sectionObserverOptions);
+    }, observerOptions);
 
-    const sections = document.querySelectorAll('.content-section, .hero-section, footer');
-    sections.forEach(section => {
-        section.classList.add('fade-in-section');
-        sectionObserver.observe(section);
-    });
+    // Observe Sections and List Items for a granular flow
+    const animatedElements = document.querySelectorAll('.content-section, .timeline-item, .paper-list li, .award-item, .exp-item');
 
-    // Initialize items with opacity 0 class for staggering
-    const animatableItems = document.querySelectorAll('.timeline-item, .keyword, .award-item, .publication-list li');
-    animatableItems.forEach(item => {
-        item.classList.add('slide-in-item');
+    animatedElements.forEach((el, index) => {
+        el.classList.add('fade-in');
+        // Optional: slight delay based on index within section could be complex,
+        // but let's keep it simple: just observe them.
+        observer.observe(el);
     });
 });
