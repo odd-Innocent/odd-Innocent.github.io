@@ -78,6 +78,8 @@ ul {
 .sidebar-inner {
     position: sticky;
     top: 60px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
 }
 
 .profile-img-container {
