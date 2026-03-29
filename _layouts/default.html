@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'ko' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncatewords: 50 }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  {% seo %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="{{ '/' | relative_url }}" class="site-title">Hyrax <span>Insights</span></a>
+      <nav class="site-nav">
+        <a href="{{ '/' | relative_url }}">Reports</a>
+        <a href="{{ '/about' | relative_url }}">About</a>
+        <a href="{{ '/cv/' | relative_url }}">CV</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Powered by <strong>Hyrax Deep Think Tank</strong> — AI-Driven AEC Research Intelligence</p>
+      <p>&copy; {{ 'now' | date: '%Y' }} odd-Innocent. Generated autonomously.</p>
+    </div>
+  </footer>
+</body>
+</html>

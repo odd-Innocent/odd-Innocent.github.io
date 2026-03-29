@@ -1,291 +1,65 @@
-<!DOCTYPE html>
-<html lang="ko">
+---
+layout: default
+title: Home
+---
+<div class="container">
+  <div class="hero">
+    <h1>Hyrax AEC Insights</h1>
+    <p>AI 기반 건축·엔지니어링·건설(AEC) 분야 연구 인텔리전스.<br>
+    산업 트렌드, 학술 동향, 기술 딥다이브를 자동 생성합니다.</p>
+  </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inho Jo - CV</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+  <div class="subscribe-box">
+    <h3>📬 뉴스레터 구독</h3>
+    <p>매주 AEC 최신 인사이트를 이메일로 받아보세요.</p>
+    <form class="subscribe-form" action="https://buttondown.com/api/emails/embed-subscribe/hyrax-insights" method="post" target="_blank">
+      <input type="email" name="email" placeholder="이메일 주소" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
 
-<body>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterReports('all')">All</button>
+    <button class="filter-btn" onclick="filterReports('daily')">Daily</button>
+    <button class="filter-btn" onclick="filterReports('weekly')">Weekly</button>
+    <button class="filter-btn" onclick="filterReports('monthly')">Monthly</button>
+    <button class="filter-btn" onclick="filterReports('annual')">Annual</button>
+  </div>
 
-    <div class="layout-container">
-        <!-- Sidebar: Profile & Contact -->
-        <aside class="profile-sidebar">
-            <div class="sidebar-inner">
-                <div class="profile-header">
-                    <div class="profile-img-container">
-                        <img src="profile.jpg" alt="Inho Jo">
-                    </div>
-                    <h1 class="name-kr">조인호</h1>
-                    <h2 class="name-en">Inho Jo</h2>
-                </div>
+  <div class="report-list">
+    {% assign sorted = site.reports | sort: 'date' | reverse %}
+    {% for report in sorted limit:30 %}
+    <a href="{{ report.url | relative_url }}" class="report-card" data-type="{{ report.report_type }}">
+      <div class="meta">
+        <span class="badge badge-{{ report.report_type }}">{{ report.report_type }}</span>
+        <span class="date">{{ report.date | date: "%Y-%m-%d" }}</span>
+        {% if report.lang %}<span>{{ report.lang | upcase }}</span>{% endif %}
+      </div>
+      <h2>{{ report.title }}</h2>
+      {% if report.excerpt_text %}
+        <p class="excerpt">{{ report.excerpt_text | truncatewords: 40 }}</p>
+      {% else %}
+        <p class="excerpt">{{ report.content | strip_html | truncatewords: 40 }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
 
-                <div class="contact-info">
-                    <ul class="contact-list">
-                        <li>
-                            <i class="fas fa-phone-alt icon"></i>
-                            <a href="tel:01099167562">010-9916-7562</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope icon"></i>
-                            <a href="mailto:odd.innocent@gmail.com">odd.innocent@gmail.com</a>
-                        </li>
-                        <li>
-                            <i class="fab fa-orcid icon"></i>
-                            <a href="https://orcid.org/0009-0002-4859-2554" target="_blank">0009-0002-4859-2554</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/inho-jo-751631b8/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://scholar.google.co.kr/citations?user=e1jBZuwAAAAJ&hl=ko" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=100004913204046" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/@odd.innocent" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-
-                <div class="copyright">
-                    &copy; 2025 Inho Jo.
-                </div>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-
-            <!-- Education Section -->
-            <section class="content-section" id="education">
-                <h3 class="section-title">Education</h3>
-                <div class="timeline-container">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2026.02</div>
-                        <div class="timeline-content">
-                            <h4 class="degree">Ph.D in Architectural Engineering</h4>
-                            <p class="major">Major in Construction Materials & Construction Management</p>
-                            <p class="institution">Hanyang University</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2021.02</div>
-                        <div class="timeline-content">
-                            <h4 class="degree">B.E in Architectural Engineering</h4>
-                            <p class="institution">Hanyang University</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2016.02</div>
-                        <div class="timeline-content">
-                            <h4 class="degree">HSD in Web Programming</h4>
-                            <p class="institution">Korea Digital Media High School</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Research Interests Section -->
-            <section class="content-section" id="research-interests">
-                <h3 class="section-title">Research Interests</h3>
-                <div class="tags-container">
-                    <span class="tag">Automation in Construction</span>
-                    <span class="tag">Construction Management</span>
-                    <span class="tag">Project Management</span>
-                    <span class="tag">Facility Management</span>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">Artificial Intelligence</span>
-                    <span class="tag">Process Optimization</span>
-                </div>
-            </section>
-
-            <!-- Publications Section -->
-            <section class="content-section" id="publications">
-                <h3 class="section-title">Publications <span class="sub-badge">SCI</span></h3>
-                <ul class="paper-list">
-                    <li>
-                        <span class="paper-year">2025</span>
-                        <div class="paper-details">
-                            <span class="paper-authors"><strong>Inho Jo</strong>, Yungu Lee*, Namhyuk Ham*, Juhyung Kim, Jae-Jun Kim.</span>
-                            <a href="https://doi.org/10.3390/app15137196" target="_blank" class="paper-link">A Quantitative Evaluation of UAV Flight Parameters for SfM-based 3D Reconstruction of Buildings.</a>
-                            <span class="paper-journal">Applied Sciences, 15(13), 7196.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="paper-year">2025</span>
-                        <div class="paper-details">
-                            <span class="paper-authors"><strong>Inho Jo</strong>, SangHyeok Han, Lei Hou, Sungkon Moon*, & Jae-Jun Kim.</span>
-                            <a href="https://doi.org/10.1061/JMENEA.MEENG-6296" target="_blank" class="paper-link">Developing and Evaluating a Classification Model for Construction Defect Control: A Text Mining and Ensemble Learning Approach.</a>
-                            <span class="paper-journal">Journal of Management in Engineering, 41(2), 04024071.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="paper-year">2024</span>
-                        <div class="paper-details">
-                            <span class="paper-authors">Bohee Kim, <strong>Inho Jo*</strong>, Namhyuk Ham*, Jae-jun Kim.</span>
-                            <a href="https://doi.org/10.3390/app142311383" target="_blank" class="paper-link">Simplified Scan-vs-BIM Frameworks for Automated Structural Inspection of Steel Structures.</a>
-                            <span class="paper-journal">Applied Sciences, 14(23), 11383.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="paper-year">2023</span>
-                        <div class="paper-details">
-                            <span class="paper-authors">Seok-Ho Noh, <strong>Inho Jo</strong>, SangHyeok Han, Sungkon Moon*, Jae-Jun Kim.</span>
-                            <a href="https://doi.org/10.3390/buildings13122933" target="_blank" class="paper-link">Identification of occupant dissatisfaction factors in newly constructed apartments: Text mining and semantic network analysis.</a>
-                            <span class="paper-journal">Buildings, 13(12), 2933.</span>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Research Experience Section -->
-            <section class="content-section" id="research-experience">
-                <h3 class="section-title">Research Experience</h3>
-                <div class="experience-list">
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <span class="exp-role">Researcher</span>
-                            <span class="exp-date">2025.03 - Present</span>
-                        </div>
-                        <h4 class="exp-title">Development of Prompt Engineering Framework for the Generative AI Utilization in Domestic and International Construction Project Contract Risk Management</h4>
-                        <p class="exp-inst">Ministry of Land, Infrastructure and Transport</p>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <span class="exp-role">Researcher</span>
-                            <span class="exp-date">2022.03 - 2023.12</span>
-                        </div>
-                        <h4 class="exp-title">Research on the Future of Architectural Spaces in 2050</h4>
-                        <p class="exp-inst">Korea Agency for Infrastructure Technology Advancement</p>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <span class="exp-role">Researcher</span>
-                            <span class="exp-date">2022.03 - 2023.12</span>
-                        </div>
-                        <h4 class="exp-title">Research on the development of digital diagnosis and design integration technology for buildings to promote green remodeling</h4>
-                        <p class="exp-inst">Korea Institute of Construction Technology</p>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <span class="exp-role">Researcher</span>
-                            <span class="exp-date">2022.06 - 2022.12</span>
-                        </div>
-                        <h4 class="exp-title">Research on Smart City Embedded Urban Space Solutions</h4>
-                        <p class="exp-inst">Hyundai NGV</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Work Experience Section -->
-            <section class="content-section" id="work-experience">
-                <h3 class="section-title">Work Experience</h3>
-                <div class="experience-list">
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <span class="exp-role">Research Engineer</span>
-                            <span class="exp-date">2026.03 - Present</span>
-                        </div>
-                        <h4 class="exp-title">RESEARCH INSTITUTE OF INDUSTRIAL SCIENCE</h4>
-                    </div>
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <span class="exp-role">Principal Research Engineer</span>
-                            <span class="exp-date">2017.09 - 2021.04</span>
-                        </div>
-                        <h4 class="exp-title">RP AEC Co.,Ltd</h4>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Teaching Experience Section -->
-            <section class="content-section" id="teaching-experience">
-                <h3 class="section-title">Teaching Experience</h3>
-                <div class="experience-list">
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <span class="exp-role">PBL Tutor</span>
-                            <span class="exp-date">2025.09 - Present</span>
-                        </div>
-                        <h4 class="exp-title">Adventure Design</h4>
-                        <p class="exp-inst">Hanyang University</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Awards Section -->
-            <section class="content-section" id="awards">
-                <h3 class="section-title">Awards & Honors</h3>
-                <ul class="awards-list">
-                    <li>
-                        <span class="award-date">2023.12</span>
-                        <div class="award-content">
-                            <span class="award-title">The Ki Chan Yu Memorial Junior Award</span>
-                            <span class="award-inst">Korean Institute of BIM</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="award-date">2022.12</span>
-                        <div class="award-content">
-                            <span class="award-title">Grand Prize, KIBIM BIM Symposium Competition</span>
-                            <span class="award-inst">Korean Institute of BIM</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="award-date">2021.12</span>
-                        <div class="award-content">
-                            <span class="award-title">Excellence Prize, KIBIM International Symposium Competition</span>
-                            <span class="award-inst">Korean Institute of BIM</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="award-date">2020.12</span>
-                        <div class="award-content">
-                            <span class="award-title">Grand Prize, KIBIM International Symposium Competition</span>
-                            <span class="award-inst">Korean Institute of BIM</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="award-date">2020.11</span>
-                        <div class="award-content">
-                            <span class="award-title">Alumni Association Award, Hanyang University Architecture Academic Festival</span>
-                            <span class="award-inst">Hanyang University</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="award-date">2019.11</span>
-                        <div class="award-content">
-                            <span class="award-title">Grand Prize, Hanyang University Architecture Academic Festival</span>
-                            <span class="award-inst">Hanyang University</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="award-date">2018.11</span>
-                        <div class="award-content">
-                            <span class="award-title">Grand Prize, Hanyang University Architecture Academic Festival</span>
-                            <span class="award-inst">Hanyang University</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="award-date">2014.08</span>
-                        <div class="award-content">
-                            <span class="award-title">Minister of Science, ICT and Future Planning Award, The 1st Creative Economy Town Idea Contest</span>
-                            <span class="award-inst">Ministry of Science, ICT and Future Planning</span>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-        </main>
+    {% if site.reports.size == 0 %}
+    <div style="text-align: center; padding: 60px 0; color: #9ca3af;">
+      <p style="font-size: 48px; margin-bottom: 12px;">🔭</p>
+      <p style="font-size: 16px;">첫 번째 보고서가 곧 발행됩니다.</p>
+      <p style="font-size: 14px;">Hyrax Think Tank이 AEC 데이터를 분석하고 있습니다.</p>
     </div>
+    {% endif %}
+  </div>
+</div>
 
-    <script src="script.js"></script>
-</body>
-
-</html>
+<script>
+function filterReports(type) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.report-card').forEach(card => {
+    card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+  });
+}
+</script>
