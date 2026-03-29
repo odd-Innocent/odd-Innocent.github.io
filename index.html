@@ -4,8 +4,7 @@ title: Home
 ---
 <div class="hero">
   <div class="hero-inner">
-    <h1>AEC Research Insights</h1>
-    <p>건축·엔지니어링·건설 분야의 주간/월간 연구 동향과 산업 인사이트를 제공합니다.</p>
+    <span class="hero-sub">AEC Research Insights — 건축·엔지니어링·건설 연구 동향</span>
   </div>
 </div>
 
@@ -16,16 +15,18 @@ title: Home
   </div>
 
   <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterReports('all')">All</button>
-    <button class="filter-btn" onclick="filterReports('weekly')">Weekly Insight</button>
-    <button class="filter-btn" onclick="filterReports('monthly')">Monthly Deep Dive</button>
-    <button class="filter-btn" onclick="filterReports('annual')">Annual Review</button>
+    <button class="filter-btn active" onclick="filterReports('all','ko')">한국어</button>
+    <button class="filter-btn" onclick="filterReports('all','en')">English</button>
+    <span style="width:1px;height:16px;background:var(--border);margin:0 4px;"></span>
+    <button class="filter-btn" onclick="filterReports('weekly')">Weekly</button>
+    <button class="filter-btn" onclick="filterReports('monthly')">Monthly</button>
+    <button class="filter-btn" onclick="filterReports('annual')">Annual</button>
   </div>
 
   <div class="report-list">
     {% assign sorted = site.reports | sort: 'date' | reverse %}
     {% for report in sorted limit:30 %}
-    <a href="{{ report.url | relative_url }}" class="report-card" data-type="{{ report.report_type }}">
+    <a href="{{ report.url | relative_url }}" class="report-card" data-type="{{ report.report_type }}" data-lang="{{ report.lang }}">
       <div class="meta">
         <span class="badge badge-{{ report.report_type }}">{{ report.report_type }}</span>
         <span class="date">{{ report.date | date: "%B %d, %Y" }}</span>
@@ -55,12 +56,29 @@ title: Home
 </div>
 
 <script>
-function filterReports(type) {
+var currentLang = 'ko';
+var currentType = 'all';
+
+function filterReports(type, lang) {
+  if (lang) currentLang = lang;
+  if (type && type !== 'all') currentType = type;
+  else if (type === 'all' && lang) currentType = 'all';
+
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   event.target.classList.add('active');
+
   document.querySelectorAll('.report-card').forEach(card => {
     if (!card.dataset.type) return;
-    card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+    var langMatch = card.dataset.lang === currentLang;
+    var typeMatch = currentType === 'all' || card.dataset.type === currentType;
+    card.style.display = (langMatch && typeMatch) ? '' : 'none';
   });
 }
+
+// Default: show Korean only
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.report-card').forEach(function(card) {
+    if (card.dataset.lang !== 'ko') card.style.display = 'none';
+  });
+});
 </script>
