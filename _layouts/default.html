@@ -12,10 +12,11 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <a href="{{ '/' | relative_url }}" class="site-title">Hyrax <span>Insights</span></a>
+      <a href="{{ '/' | relative_url }}" class="site-title">
+        <img src="{{ '/assets/logo.png' | relative_url }}" alt="Hyrax" style="height: 32px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">Hyrax <span>Insights</span>
+      </a>
       <nav class="site-nav">
         <a href="{{ '/' | relative_url }}">Reports</a>
-        <a href="{{ '/about' | relative_url }}">About</a>
         <a href="{{ '/cv/' | relative_url }}">CV</a>
         <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
       </nav>
@@ -28,6 +29,14 @@
 
   <footer class="site-footer">
     <div class="container">
+      <div class="subscribe-box" style="margin-bottom: 24px;">
+        <h3>📬 AEC Insights 구독</h3>
+        <p>매주 최신 AEC 산업·학계 인사이트를 이메일로 받아보세요.</p>
+        <form class="subscribe-form" action="https://buttondown.com/api/emails/embed-subscribe/hyrax-insights" method="post" target="_blank">
+          <input type="email" name="email" placeholder="이메일 주소" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
       <p>Powered by <strong>Hyrax Deep Think Tank</strong> — AI-Driven AEC Research Intelligence</p>
       <p>&copy; {{ 'now' | date: '%Y' }} odd-Innocent. Generated autonomously.</p>
     </div>
