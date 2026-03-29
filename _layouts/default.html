@@ -13,7 +13,7 @@
   <header class="site-header">
     <div class="container">
       <a href="{{ '/' | relative_url }}" class="site-title">
-        <img src="{{ '/assets/logo.png' | relative_url }}" alt="Hyrax">
+        <img src="{{ '/assets/logo.png' | relative_url }}" alt="Hyrax" style="height: 28px; border-radius: 4px;">
         Hyrax <span>Insights</span>
       </a>
       <nav class="site-nav">
@@ -30,23 +30,13 @@
 
   <footer class="site-footer">
     <div class="container">
-      <!-- Newsletter subscription (disabled for now)
-      <div class="subscribe-box">
-        <h3>Subscribe to AEC Insights</h3>
-        <p>주간 AEC 산업·학계 인사이트를 이메일로 받아보세요.</p>
-        <form class="subscribe-form" action="https://buttondown.com/api/emails/embed-subscribe/hyrax-insights" method="post" target="_blank">
-          <input type="email" name="email" placeholder="your@email.com" required>
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
-      -->
       <div class="footer-links">
         <a href="{{ '/' | relative_url }}">Reports</a>
         <a href="{{ '/cv/' | relative_url }}">About the Author</a>
         <a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a>
         <a href="https://github.com/odd-Innocent" target="_blank">GitHub</a>
       </div>
-      <p class="footer-copy">&copy; {{ 'now' | date: '%Y' }} Hyrax AEC Insights. Powered by Hyrax Deep Think Tank — AI-driven research intelligence.</p>
+      <p class="footer-copy">&copy; {{ 'now' | date: '%Y' }} Hyrax AEC Insights. Powered by Hyrax Deep Think Tank.</p>
     </div>
   </footer>
 </body>
