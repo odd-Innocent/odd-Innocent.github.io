@@ -62,7 +62,7 @@ a:hover { color: #000; }
 /* ── Hero (paper feel) ── */
 .hero {
   background: var(--paper);
-  padding: 12px 0;
+  padding: 6px 0;
   border-bottom: 1px solid var(--border);
 }
 .hero-inner {
