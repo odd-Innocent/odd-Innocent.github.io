@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <title>{% if page.title and page.title != 'Home' %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncatewords: 50 }}">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
@@ -13,11 +13,12 @@
   <header class="site-header">
     <div class="container">
       <a href="{{ '/' | relative_url }}" class="site-title">
-        <img src="{{ '/assets/logo.png' | relative_url }}" alt="Hyrax" style="height: 32px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">Hyrax <span>Insights</span>
+        <img src="{{ '/assets/logo.png' | relative_url }}" alt="Hyrax">
+        Hyrax <span>Insights</span>
       </a>
       <nav class="site-nav">
         <a href="{{ '/' | relative_url }}">Reports</a>
-        <a href="{{ '/cv/' | relative_url }}">CV</a>
+        <a href="{{ '/cv/' | relative_url }}">About the Author</a>
         <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
       </nav>
     </div>
@@ -29,16 +30,21 @@
 
   <footer class="site-footer">
     <div class="container">
-      <div class="subscribe-box" style="margin-bottom: 24px;">
-        <h3>📬 AEC Insights 구독</h3>
-        <p>매주 최신 AEC 산업·학계 인사이트를 이메일로 받아보세요.</p>
+      <div class="subscribe-box">
+        <h3>Subscribe to AEC Insights</h3>
+        <p>주간 AEC 산업·학계 인사이트를 이메일로 받아보세요.</p>
         <form class="subscribe-form" action="https://buttondown.com/api/emails/embed-subscribe/hyrax-insights" method="post" target="_blank">
-          <input type="email" name="email" placeholder="이메일 주소" required>
+          <input type="email" name="email" placeholder="your@email.com" required>
           <button type="submit">Subscribe</button>
         </form>
       </div>
-      <p>Powered by <strong>Hyrax Deep Think Tank</strong> — AI-Driven AEC Research Intelligence</p>
-      <p>&copy; {{ 'now' | date: '%Y' }} odd-Innocent. Generated autonomously.</p>
+      <div class="footer-links">
+        <a href="{{ '/' | relative_url }}">Reports</a>
+        <a href="{{ '/cv/' | relative_url }}">About the Author</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a>
+        <a href="https://github.com/odd-Innocent" target="_blank">GitHub</a>
+      </div>
+      <p class="footer-copy">&copy; {{ 'now' | date: '%Y' }} Hyrax AEC Insights. Powered by Hyrax Deep Think Tank — AI-driven research intelligence.</p>
     </div>
   </footer>
 </body>
