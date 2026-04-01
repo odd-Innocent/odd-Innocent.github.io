@@ -1,7 +1,7 @@
 ---
 layout: report
 title: "AEC Monthly Deep Dive: computer science | April 2026"
-date: 2026-04-01 11:02:24 +0000
+date: 2026-04-01 11:03:37 +0000
 report_type: monthly
 lang: en
 period: "2026-04"
