@@ -1,0 +1,84 @@
+---
+layout: default
+title: Home
+---
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-sub">건축·엔지니어링·건설 분야 연구 동향 및 산업 인사이트</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="content-paper">
+  <div class="section-header">
+    <h2>Reports</h2>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterReports('all','ko')">한국어</button>
+    <button class="filter-btn" onclick="filterReports('all','en')">English</button>
+    <span style="width:1px;height:16px;background:var(--border);margin:0 4px;"></span>
+    <button class="filter-btn" onclick="filterReports('weekly')">Weekly</button>
+    <button class="filter-btn" onclick="filterReports('monthly')">Monthly</button>
+    <button class="filter-btn" onclick="filterReports('annual')">Annual</button>
+  </div>
+
+  <div class="report-list">
+    {% assign sorted = site.reports | sort: 'date' | reverse %}
+    {% for report in sorted limit:30 %}
+    <a href="{{ report.url | relative_url }}" class="report-card" data-type="{{ report.report_type }}" data-lang="{{ report.lang }}">
+      <div class="meta">
+        <span class="badge badge-{{ report.report_type }}">{{ report.report_type }}</span>
+        <span class="date">{{ report.date | date: "%B %d, %Y" }}</span>
+        {% if report.lang %}<span style="color: #9ca3af;">{{ report.lang | upcase }}</span>{% endif %}
+      </div>
+      <h2>{{ report.title }}</h2>
+      {% if report.excerpt_text %}
+        <p class="excerpt">{{ report.excerpt_text | truncatewords: 50 }}</p>
+      {% else %}
+        <p class="excerpt">{{ report.content | strip_html | truncatewords: 50 }}</p>
+      {% endif %}
+    </a>
+    {% endfor %}
+
+    {% if site.reports.size == 0 %}
+    <div class="report-card">
+      <div class="empty-state">
+        <div class="icon">🔭</div>
+        <h3>First Report Coming Soon</h3>
+        <p>Hyrax Think Tank is currently analyzing AEC research data across 2,400+ knowledge nodes.<br>
+        The first weekly insight will be published shortly.</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  </div>
+</div>
+
+<script>
+var currentLang = 'ko';
+var currentType = 'all';
+
+function filterReports(type, lang) {
+  if (lang) currentLang = lang;
+  if (type && type !== 'all') currentType = type;
+  else if (type === 'all' && lang) currentType = 'all';
+
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  document.querySelectorAll('.report-card').forEach(card => {
+    if (!card.dataset.type) return;
+    var langMatch = card.dataset.lang === currentLang;
+    var typeMatch = currentType === 'all' || card.dataset.type === currentType;
+    card.style.display = (langMatch && typeMatch) ? '' : 'none';
+  });
+}
+
+// Default: show Korean only
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.report-card').forEach(function(card) {
+    if (card.dataset.lang !== 'ko') card.style.display = 'none';
+  });
+});
+</script>
